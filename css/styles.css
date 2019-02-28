@@ -4,9 +4,9 @@
 }
 .row-content {
     margin: 0px auto;
-    padding: 50px 0px 50px 0px;
+    padding: 10px 0px 10px 0px;
     border-bottom: 1px ridge gray;
-    min-height: 400px;
+    min-height: auto;
 }
 .footer {
     background-color:black;
@@ -42,4 +42,8 @@ body{
 }
 #heads1{
     color: black;
+}
+#imossiblepic{
+    height: auto;
+    width: auto;
 }
