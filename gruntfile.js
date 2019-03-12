@@ -15,7 +15,7 @@ module.exports = function(grunt){
                 implementation: sass,
                 sourceMap: true
             },
-            dist: {
+            docs: {
                 files: {
                     'css/styles.css': 'css/styles.scss'
                 }
@@ -74,7 +74,7 @@ module.exports = function(grunt){
                     expand: true,
                     // dot: true,
                     cwd: './',
-                    src: ['img/*.{png,jpg,gif}'],
+                    src: ['img/*.{png,jpg,JPG,gif}'],
                     dest: 'docs/'
                 }]
             }
@@ -82,9 +82,10 @@ module.exports = function(grunt){
         useminPrepare: {
             foo: {
                 dest: 'docs/',
-                src: ['Content.html','aboutus.html','index.html', 'habit.html']
+                src: ['habit.html','aboutus.html','Content.html','index.html']
             },
             options: {
+                dest: 'docs/',
                 flow: {
                     steps: {
                         css: ['cssmin'],
@@ -110,15 +111,15 @@ module.exports = function(grunt){
                 separator: ';'
             },
             // dist configuration is provided by useminPrepare
-            dist: {}
+            docs: {}
         },
         // Uglify
         uglify: {
             // dist configuration is provided by useminPrepare
-            dist: {}
+            docs: {}
         },
         cssmin: {
-            dist: {}
+            docs: {}
         },
         // Filerev
         filerev: {
@@ -143,21 +144,21 @@ module.exports = function(grunt){
         // options.assetDirs contains the directories for finding the assets
         // according to their relative paths
         usemin: {
-            html: ['docs/Content.html','docs/aboutus.html','docs/index.html', 'docs/habit.html'],
+            html: ['docs/habit.html','docs/aboutus.html','docs/index.html', 'docs/Content.html'],
             options: {
                 assetsDirs: ['docs', 'docs/css','docs/js']
             }
         },
         htmlmin: {                                         // Task
-            dist: {                                        // Target
+            docs: {                                        // Target
                 options: {                                 // Target options
                     collapseWhitespace: true
                 },
                 files: {                                   // Dictionary of files
                     'docs/index.html': 'docs/index.html',  // 'destination': 'source'
-                    'docs/Content.html': 'docs/Content.html',
-                    'docs/aboutus.html': 'docs/aboutus.html',
                     'docs/habit.html': 'docs/habit.html',
+                    'docs/aboutus.html': 'docs/aboutus.html',
+                    'docs/Content.html': 'docs/Content.html',
                 }
             }
         },
@@ -208,4 +209,5 @@ module.exports = function(grunt){
         'htmlmin'
     ]);
     grunt.registerTask('git', ['gitadd', 'gitcommit']);
+    grunt.registerTask('css', ['cssmin']);
 };
